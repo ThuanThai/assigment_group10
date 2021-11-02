@@ -6,7 +6,7 @@
 using namespace std;
 
 
-void read_csvFile(int col1[], int col2[], int& length) {
+void read_csvFile(char* fileName, int col1[], int col2[], int& length) {
 	ifstream fin;
 	fin.open("data1.csv", ios::in);
 	if (!fin) {

@@ -35,7 +35,7 @@ double find_variance(int arr[], int length) {
 	double sqDiff = 0;
 	int mean = findMean(arr, length);
 	for (int i = 0; i < length; i++) {
-		sqDiff += (arr[i] - mean) * (arr[i] - mean);
+		sqDiff += pow((arr[i] - mean), 2);
 	}
 
 	return sqDiff / (length - 1);

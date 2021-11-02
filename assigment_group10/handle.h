@@ -1,6 +1,7 @@
 #pragma once
 #include "quicksort.h"
 #include <unordered_map>
+#include <math.h>
 #define LOW 0
 
 int findMedian(int arr[], int length) {
@@ -20,6 +21,28 @@ int findMax(int arr[], int length) {
 		}
 	}
 	return max;
+}
+
+double findMean(int arr[], int length) {
+	int sum = 0;
+	for (int i = 0; i < length; i++) {
+		sum += arr[i];
+	}
+	return (double) sum / length;
+}
+
+double find_variance(int arr[], int length) {
+	double sqDiff = 0;
+	int mean = findMean(arr, length);
+	for (int i = 0; i < length; i++) {
+		sqDiff += (arr[i] - mean) * (arr[i] - mean);
+	}
+
+	return sqDiff / (length - 1);
+}
+
+double standardDeviation(int arr[], int length) {
+	return sqrt(find_variance(arr, length));
 }
 
 int findMode(int arr[], int length) {
@@ -52,6 +75,7 @@ void Menu(int col1[], int col2[], int length) {
 		system("cls");
 		cout << "1. Find Median element for x and y\n";
 		cout << "2. Find Mode\n";
+		cout << "3. Find Variance and Standard Deviation\n";
 		cout << "\tEnter the number\n";
 		cin >> choice;
 		switch (choice) {
@@ -77,6 +101,18 @@ void Menu(int col1[], int col2[], int length) {
 			system("pause");
 		}
 		break;
+
+		case 3:
+		{
+			double x = find_variance(col1, length);
+			double y = find_variance(col2, length);
+			double x1 = standardDeviation(col1, length);
+			double y1 = standardDeviation(col1, length);
+
+			cout << x << " " << y << "\n" << x1 << " " << y1 << endl;
+			system("pause");
+			break;
+		}
 
 		case 0:
 			delete[] col1;

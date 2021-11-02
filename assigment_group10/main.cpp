@@ -11,7 +11,6 @@ int main(int argc, char* argv[]) {
 	if (argc != 2 || !contain(".csv", argv[1])) {
 		cout << "Wrong compiling method!!!\n" << "Please compile as follow: assignment1_group10.exe <filename>.csv" << endl;
 	}
-	else cout << argv[1] << endl;
 	
 	int length;
 	int* col1 = new int[50000];
@@ -25,7 +24,7 @@ int main(int argc, char* argv[]) {
 	quickSort(col1, LOW, high1);
 	quickSort(col2, LOW, high2);
 	//Call Menu Function
-	//Menu(col1, col2, length);
+	Menu(col1, col2, length);
 
 	return 0;
 }

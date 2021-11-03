@@ -3,7 +3,7 @@
 #include <iostream> 
 #include <string> 
 #include <sstream>
-#include "Header.h"
+#include "controller.h"
 using namespace std;
 
 
@@ -13,9 +13,9 @@ bool contain(const string& word, const string& sentence) {
 		!= string::npos;  // which will take this value if it's not found
 }
 
-void read_csvFile(int col1[], int col2[], int& length) {
+void read_csvFile(char* fileName, myArray& col1, myArray& col2) {
 	ifstream fin;
-	fin.open("data1.csv", ios::in);
+	fin.open(fileName, ios::in);
 	if (!fin) {
 		cout << "Cannot open File!\n";
 	}
@@ -33,11 +33,10 @@ void read_csvFile(int col1[], int col2[], int& length) {
 			if (!isalpha(temp1[0]) || !isalpha(temp2[0])) {
 				int num1 = stoi(temp1);
 				int num2 = stoi(temp2);
-				col1[i] = num1;
-				col2[i] = num2;
-				i++;
+				col1.add(num1);
+				col2.add(num2);
 			}
 		}
 	}
-	length = i;
+
 }

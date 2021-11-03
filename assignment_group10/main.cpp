@@ -1,5 +1,5 @@
 #include "handle.h"
-
+#include "controller.h"
 
 int main(int argc, char* argv[]) {
 
@@ -8,17 +8,11 @@ int main(int argc, char* argv[]) {
 	}
 	
 	int length;
-	int* col1 = new int[50000];
-	int* col2 = new int[50000];
+	myArray col1, col2;
 	// read csvFile then store the value into the vector
-	read_csvFile(col1, col2, length);
-
-	int high1 = length - 1;
-	int high2 = length - 1;
-	//using quick sort to order the array
-	quickSort(col1, LOW, high1);
-	quickSort(col2, LOW, high2);
-	//Call Menu Function
-	Menu(col1, col2, length);
+	read_csvFile(argv[1], col1, col2);
+	col1.shrinksize(), col2.shrinksize();
+	quickSort(col1.getArray(), 0, col1.getSize());
+	col1.print();
 	return 0;
 }

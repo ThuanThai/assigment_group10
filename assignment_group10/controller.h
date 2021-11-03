@@ -9,11 +9,14 @@ private:
 	int size;
 
 public:
+	int getSize() { return size; };
+	int* getArray() { return arr; };
 	myArray();
 	void add(int val);
 	void growsize();
+	void shrinksize();
 	void print();
-	int getSize() { return size; };
+	
 };
 
 myArray::myArray() {
@@ -30,12 +33,26 @@ void myArray::add(int val) {
 }
 
 void myArray::growsize() {
-	int* temp = new int[size * 2];
+	int* temp = new int[size + 100];
 	for (int i = 0; i < size; i++) {
 		temp[i] = arr[i];
 	}
+	delete[] arr;
 	arr = temp;
-	size *= 2;
+	size += 100;
+}
+
+void myArray::shrinksize() {
+	int* temp = NULL;
+	if (count > 0) {
+		temp = new int[count];
+		for (int i = 0; i < count; i++) {
+			temp[i] = arr[i];
+		}
+	}
+	delete[] arr;
+	arr = temp;
+	size = count;
 }
 
 void myArray::print() {

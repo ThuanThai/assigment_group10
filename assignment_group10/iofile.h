@@ -3,10 +3,17 @@
 #include <iostream> 
 #include <string> 
 #include <sstream>
+#include "Header.h"
 using namespace std;
 
 
-void read_csvFile(char* fileName, int col1[], int col2[], int& length) {
+bool contain(const string& word, const string& sentence) {
+	return sentence.find(word)    // this returns the index of the first instance
+								  // word
+		!= string::npos;  // which will take this value if it's not found
+}
+
+void read_csvFile(int col1[], int col2[], int& length) {
 	ifstream fin;
 	fin.open("data1.csv", ios::in);
 	if (!fin) {

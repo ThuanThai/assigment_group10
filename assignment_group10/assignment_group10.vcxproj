@@ -140,6 +140,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="handle.h" />
+    <ClInclude Include="Header.h" />
     <ClInclude Include="iofile.h" />
     <ClInclude Include="quicksort.h" />
   </ItemGroup>

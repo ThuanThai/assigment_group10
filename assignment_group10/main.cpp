@@ -1,6 +1,12 @@
 #include "handle.h"
 
-int main() {
+
+int main(int argc, char* argv[]) {
+
+	if (argc != 2 || !contain(".csv", argv[1])) {
+		cout << "Wrong compiling method!!!\n" << "Please compile as follow: assignment1_group10.exe <filename>.csv" << endl;
+	}
+	
 	int length;
 	int* col1 = new int[50000];
 	int* col2 = new int[50000];

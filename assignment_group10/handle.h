@@ -13,7 +13,7 @@ int findMedian(float arr[], int length) {
 	}
 }
 
-int findMax(float arr[], int length) {
+float findMax(float arr[], int length) {
 	float max = arr[0];
 	for (int i = 0; i < length; i++) {
 		if (arr[i] > max) {
@@ -63,6 +63,38 @@ int findMode(float arr[], int length) {
 			val = count[i];
 			mode = i;
 		}
+	}
+	return mode;
+}
+
+float find_mode_new(float arr[], int length) {
+	// only work if the array already sorted
+	
+	// initialize 
+	float mode = 0;
+	int mode_count = 0;
+	float current_num = 0;
+	int current_count = 0;
+
+	// loop through array
+	for (int i = 0; i < length; i++) {
+
+		//reset if meeting a new number
+		if (arr[i] != current_num) {
+
+			//update mode and mode_count if the current number appears more frequently
+			if ((i != 0) && (current_count > mode_count)) {
+				mode_count = current_count;
+				mode = arr[i - 1];
+			}
+
+			//reset
+			current_num = arr[i];
+			current_count = 1;
+
+		} else current_count++; //increase count if meeting the same number 
+
+		cout << arr[i] << " " << current_count << endl;
 	}
 	return mode;
 }

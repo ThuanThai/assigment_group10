@@ -94,7 +94,7 @@ float find_mode_new(float arr[], int length) {
 
 		} else current_count++; //increase count if meeting the same number 
 
-		cout << arr[i] << " " << current_count << endl;
+		//cout << arr[i] << " " << current_count << endl;
 	}
 	return mode;
 }

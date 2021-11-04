@@ -69,7 +69,7 @@ int findMode(float arr[], int length) {
 
 float find_mode_new(float arr[], int length) {
 	// only work if the array already sorted
-
+	
 	//find the size of the array 
 	int max = findMax(arr, length);
 	int size = max + 1;
@@ -85,18 +85,17 @@ float find_mode_new(float arr[], int length) {
 
 		//reset if meeting a new number
 		if (arr[i] != current) {
+			//update mode and mode_count if the current number appears more frequently
+			if (current_count > mode_count) {
+				mode_count = current_count;
+				mode = arr[i - 1];
+			}
 			current = arr[i];
-			current_count = 0;
-		}
+			current_count = 1;
+		} else current_count++; //increase count if meeting the same number 
 
-		//increase count if meeting the same number 
-		if (arr[i] == current) current_count++;
-
-		//update mode and mode_count if the current number appears more frequently
-		if (current_count > mode_count) {
-			mode_count = current_count;
-			mode = arr[i];
-		}
+		
+		cout << arr[i] << " " << current_count << endl;
 	}
 	return mode;
 }

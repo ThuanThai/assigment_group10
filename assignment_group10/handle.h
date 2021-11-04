@@ -81,20 +81,19 @@ float find_mode_new(float arr[], int length) {
 	int current_count = 0;
 
 	// loop through array
-	for (int i = 0; i < size; i++) {
+	for (int i = 0; arr[i] != NULL; i++) {
 
 		//reset if meeting a new number
 		if (arr[i] != current) {
-			//update mode and mode_count if the current number appears more frequently
-			if (current_count > mode_count) {
-				mode_count = current_count;
-				mode = arr[i - 1];
-			}
 			current = arr[i];
 			current_count = 1;
 		} else current_count++; //increase count if meeting the same number 
 
-		
+		//update mode and mode_count if the current number appears more frequently
+		if (current_count > mode_count) {
+			mode_count = current_count;
+			mode = arr[i];
+		}
 		cout << arr[i] << " " << current_count << endl;
 	}
 	return mode;

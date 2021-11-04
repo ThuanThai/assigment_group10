@@ -1,13 +1,13 @@
 #pragma once
 #include "iofile.h"
 
-void swap(int& a, int& b) {
-	int temp = a;
+void swap(float& a, float& b) {
+	float temp = a;
 	a = b;
 	b = temp;
 }
 
-int partition(int arr[], int low, int high) {
+int partition(float arr[], int low, int high) {
 	int pivot = arr[high];
 	int right = high - 1;
 	int left = low;
@@ -23,7 +23,7 @@ int partition(int arr[], int low, int high) {
 	return left;
 }
 
-void quickSort(int arr[], int low, int high) {
+void quickSort(float arr[], int low, int high) {
 	if (low < high) {
 		int n = partition(arr, low, high);
 		quickSort(arr, n + 1, high);

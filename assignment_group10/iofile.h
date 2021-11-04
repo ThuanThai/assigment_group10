@@ -31,8 +31,8 @@ void read_csvFile(char* fileName, myArray& col1, myArray& col2) {
 
 		while (getline(s1, temp1, ',') && getline(s2, temp2, '\n')) {
 			if (!isalpha(temp1[0]) || !isalpha(temp2[0])) {
-				int num1 = stoi(temp1);
-				int num2 = stoi(temp2);
+				float num1 = stoi(temp1);
+				float num2 = stoi(temp2);
 				col1.add(num1);
 				col2.add(num2);
 			}

@@ -4,7 +4,7 @@
 #include <math.h>
 #define LOW 0
 
-int findMedian(int arr[], int length) {
+int findMedian(float arr[], int length) {
 	if (length % 2 != 0) {
 		return arr[length / 2];
 	}
@@ -13,8 +13,8 @@ int findMedian(int arr[], int length) {
 	}
 }
 
-int findMax(int arr[], int length) {
-	int max = arr[0];
+int findMax(float arr[], int length) {
+	float max = arr[0];
 	for (int i = 0; i < length; i++) {
 		if (arr[i] > max) {
 			max = arr[i];
@@ -23,15 +23,15 @@ int findMax(int arr[], int length) {
 	return max;
 }
 
-double findMean(int arr[], int length) {
-	int sum = 0;
+double findMean(float arr[], int length) {
+	float sum = 0;
 	for (int i = 0; i < length; i++) {
 		sum += arr[i];
 	}
 	return (double) sum / length;
 }
 
-double find_variance(int arr[], int length) {
+double find_variance(float arr[], int length) {
 	double sqDiff = 0;
 	int mean = findMean(arr, length);
 	for (int i = 0; i < length; i++) {
@@ -41,11 +41,11 @@ double find_variance(int arr[], int length) {
 	return sqDiff / (length - 1);
 }
 
-double standardDeviation(int arr[], int length) {
+double standardDeviation(float arr[], int length) {
 	return sqrt(find_variance(arr, length));
 }
 
-int findMode(int arr[], int length) {
+int findMode(float arr[], int length) {
 	int max = findMax(arr, length);
 	int size = max + 1;
 	int* count = new int[size];
@@ -54,7 +54,7 @@ int findMode(int arr[], int length) {
 	}
 
 	for (int i = 0; i < length; i++) {
-		count[arr[i]]++;
+		//count[arr[i]]++;
 	}
 
 	int mode = 0, val = count[0];
@@ -67,7 +67,7 @@ int findMode(int arr[], int length) {
 	return mode;
 }
 
-void Menu(int col1[], int col2[], int length) {
+void Menu(float col1[], float col2[], int length) {
 	bool flag = true;
 	int choice;
 

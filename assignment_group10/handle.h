@@ -70,10 +70,6 @@ int findMode(float arr[], int length) {
 float find_mode_new(float arr[], int length) {
 	// only work if the array already sorted
 	
-	//find the size of the array 
-	int max = findMax(arr, length);
-	int size = max + 1;
-	
 	// initialize 
 	float mode = 0;
 	int mode_count = 0;
@@ -81,7 +77,7 @@ float find_mode_new(float arr[], int length) {
 	int current_count = 0;
 
 	// loop through array
-	for (int i = 0; arr[i] != NULL; i++) {
+	for (int i = 0; i < length; i++) {
 
 		//reset if meeting a new number
 		if (arr[i] != current) {

@@ -14,6 +14,6 @@ int main(int argc, char* argv[]) {
 	col1.shrinksize(), col2.shrinksize();
 	quickSort(col1.getArray(), 0, col1.getSize());
 	//col1.print();
-	cout << find_mode_new(col1.getArray(), col1.getSize());
+	cout << "the mode is : " << find_mode_new(col1.getArray(), col1.getSize());
 	return 0;
 }

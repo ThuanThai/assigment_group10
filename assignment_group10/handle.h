@@ -73,15 +73,15 @@ float find_mode_new(float arr[], int length) {
 	// initialize 
 	float mode = 0;
 	int mode_count = 0;
-	float current = 0;
+	float current_num = 0;
 	int current_count = 0;
 
 	// loop through array
 	for (int i = 0; i < length; i++) {
 
 		//reset if meeting a new number
-		if (arr[i] != current) {
-			current = arr[i];
+		if (arr[i] != current_num) {
+			current_num = arr[i];
 			current_count = 1;
 		} else current_count++; //increase count if meeting the same number 
 

@@ -4,28 +4,28 @@ using namespace std;
 
 class myArray {
 private:
-	float* arr;
+	double* arr;
 	int count;
 	int size;
 
 public:
 	int getSize() { return size; };
-	float* getArray() { return arr; };
+	double* getArray() { return arr; };
 	myArray();
-	void add(float val);
+	void add(double val);
 	void growsize();
 	void shrinksize();
 	void print();
-	
+
 };
 
 myArray::myArray() {
-	arr = new float[1];
+	arr = new double[1];
 	int size = 1;
 	int count = 0;
 }
 
-void myArray::add(float val) {
+void myArray::add(double val) {
 	if (count == size)
 		growsize();
 	arr[count] = val;
@@ -33,7 +33,7 @@ void myArray::add(float val) {
 }
 
 void myArray::growsize() {
-	float* temp = new float[size + 100];
+	double* temp = new double[size + 100];
 	for (int i = 0; i < size; i++) {
 		temp[i] = arr[i];
 	}
@@ -43,16 +43,16 @@ void myArray::growsize() {
 }
 
 void myArray::shrinksize() {
-	float* temp = NULL;
+	double* temp = NULL;
 	if (count > 0) {
-		temp = new float[count];
+		temp = new double[count];
 		for (int i = 0; i < count; i++) {
 			temp[i] = arr[i];
 		}
 	}
 	delete[] arr;
 	arr = temp;
-	size = count;
+	size = count - 1;
 }
 
 void myArray::print() {

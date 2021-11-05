@@ -7,7 +7,7 @@ void swap(float& a, float& b) {
 	b = temp;
 }
 
-int partition(float arr[], int low, int high) {
+int partition(double arr[], int low, int high) {
 	int pivot = arr[high];
 	int right = high - 1;
 	int left = low;
@@ -23,7 +23,7 @@ int partition(float arr[], int low, int high) {
 	return left;
 }
 
-void quickSort(float arr[], int low, int high) {
+void quickSort(double arr[], int low, int high) {
 	if (low < high) {
 		int n = partition(arr, low, high);
 		quickSort(arr, n + 1, high);

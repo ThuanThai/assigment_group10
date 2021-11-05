@@ -4,7 +4,7 @@
 #include <math.h>
 #define LOW 0
 
-int findMedian(float arr[], int length) {
+double findMedian(double arr[], int length) {
 	if (length % 2 != 0) {
 		return arr[length / 2];
 	}
@@ -13,8 +13,8 @@ int findMedian(float arr[], int length) {
 	}
 }
 
-float findMax(float arr[], int length) {
-	float max = arr[0];
+double findMax(double arr[], int length) {
+	double max = arr[0];
 	for (int i = 0; i < length; i++) {
 		if (arr[i] > max) {
 			max = arr[i];
@@ -23,15 +23,15 @@ float findMax(float arr[], int length) {
 	return max;
 }
 
-double findMean(float arr[], int length) {
-	float sum = 0;
+double findMean(double arr[], int length) {
+	double sum = 0;
 	for (int i = 0; i < length; i++) {
 		sum += arr[i];
 	}
-	return (double) sum / length;
+	return (double)sum / length;
 }
 
-double find_variance(float arr[], int length) {
+double find_variance(double arr[], int length) {
 	double sqDiff = 0;
 	int mean = findMean(arr, length);
 	for (int i = 0; i < length; i++) {
@@ -41,11 +41,11 @@ double find_variance(float arr[], int length) {
 	return sqDiff / (length - 1);
 }
 
-double standardDeviation(float arr[], int length) {
+double standardDeviation(double arr[], int length) {
 	return sqrt(find_variance(arr, length));
 }
 
-int findMode(float arr[], int length) {
+int findMode(double arr[], int length) {
 	int max = findMax(arr, length);
 	int size = max + 1;
 	int* count = new int[size];
@@ -67,14 +67,14 @@ int findMode(float arr[], int length) {
 	return mode;
 }
 
-float find_mode_new(float arr[], int length) {
+double find_mode_new(double arr[], int length) {
 	// only work if the array already sorted
-	
+
 	// initialize 
-	float mode = 0;
-	int mode_count = 0;
-	float current_num = 0;
-	int current_count = 0;
+	double mode = 0.0;
+	int mode_count = 0.0;
+	double current_num = 0.0;
+	int current_count = 0.0;
 
 	// loop through array
 	for (int i = 0; i < length; i++) {
@@ -92,14 +92,15 @@ float find_mode_new(float arr[], int length) {
 			current_num = arr[i];
 			current_count = 1;
 
-		} else current_count++; //increase count if meeting the same number 
+		}
+		else current_count++; //increase count if meeting the same number 
 
-		//cout << arr[i] << " " << current_count << endl;
+	 //cout << arr[i] << " " << current_count << endl;
 	}
 	return mode;
 }
 
-void Menu(float col1[], float col2[], int length) {
+void Menu(double col1[], double col2[], int length) {
 	bool flag = true;
 	int choice;
 

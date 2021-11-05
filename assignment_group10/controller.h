@@ -52,7 +52,7 @@ void myArray::shrinksize() {
 	}
 	delete[] arr;
 	arr = temp;
-	size = count;
+	size = count - 1;
 }
 
 void myArray::print() {

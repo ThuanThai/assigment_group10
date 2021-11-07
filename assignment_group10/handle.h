@@ -45,29 +45,8 @@ double standardDeviation(double arr[], int length) {
 	return sqrt(find_variance(arr, length));
 }
 
-int findMode(double arr[], int length) {
-	int max = findMax(arr, length);
-	int size = max + 1;
-	int* count = new int[size];
-	for (int i = 0; i < size; i++) {
-		count[i] = 0;
-	}
 
-	for (int i = 0; i < length; i++) {
-		//count[arr[i]]++;
-	}
-
-	int mode = 0, val = count[0];
-	for (int i = 0; i < size; i++) {
-		if (count[i] > val) {
-			val = count[i];
-			mode = i;
-		}
-	}
-	return mode;
-}
-
-double find_mode_new(double arr[], int length) {
+double findMode(double arr[], int length) {
 	// only work if the array already sorted
 
 	// initialize 
@@ -94,10 +73,17 @@ double find_mode_new(double arr[], int length) {
 
 		}
 		else current_count++; //increase count if meeting the same number 
-
-	 //cout << arr[i] << " " << current_count << endl;
 	}
 	return mode;
+}
+
+double findMad(double arr[], int length) {
+	double mean = findMean(arr, length);
+	double sumDiff = 0;
+	for (int i = 0; i < length; i++) {
+		sumDiff += abs((arr[i] - mean));
+	}
+	return sumDiff / length;
 }
 
 void Menu(double col1[], double col2[], int length) {

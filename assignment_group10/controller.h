@@ -9,7 +9,7 @@ private:
 	int size;
 
 public:
-	int getSize() { return size; };
+	int getSize() { return count; };
 	double* getArray() { return arr; };
 	myArray();
 	void add(double val);
@@ -52,7 +52,7 @@ void myArray::shrinksize() {
 	}
 	delete[] arr;
 	arr = temp;
-	size = count - 1;
+	size = count;
 }
 
 void myArray::print() {

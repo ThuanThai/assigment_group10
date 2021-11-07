@@ -12,10 +12,8 @@ int main(int argc, char* argv[]) {
 	// read csvFile then store the value into the vector
 	read_csvFile(argv[1], col1, col2);
 	col1.shrinksize(), col2.shrinksize();
-	quickSort(col1.getArray(), 0, col1.getSize());
-	quickSort(col2.getArray(), 0, col2.getSize());
-	col1.print();
-	/*cout << "X_mode is : " << find_mode_new(col1.getArray(), col1.getSize()) << endl;
-	cout << "Y_mode is : " << find_mode_new(col2.getArray(), col2.getSize()) << endl;;*/
+	quickSort(col1.getArray(), 0, col1.getSize() - 1);
+	quickSort(col2.getArray(), 0, col2.getSize() - 1);
+	cout << findMad(col1.getArray(), col1.getSize());
 	return 0;
 }

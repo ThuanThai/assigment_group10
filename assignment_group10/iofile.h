@@ -13,25 +13,6 @@ bool contain(const string& word, const string& sentence) {
 		!= string::npos;  // which will take this value if it's not found
 }
 
-bool is_double(string digit) {
-	int dot_counter = 0;
-	if (strlen(digit.c_str()) < 0 || strlen(digit.c_str()) > 15)
-		return false;
-	int i = 0;
-	if (digit[i] == '+' || digit[i] == '-') {
-		i++;
-	}
-	while (digit[i] != '\0') {
-		if (digit[i] == '.') {
-			dot_counter++;
-			if (dot_counter > 1) return false;
-		}
-		else if (digit[i] < '1' || digit[i] > '9')
-			return false;
-		i++;
-	}
-	return true;
-}
 
 void read_csvFile(char* fileName, myArray& col1, myArray& col2) {
 	ifstream fin;

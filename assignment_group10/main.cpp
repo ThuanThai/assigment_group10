@@ -1,9 +1,9 @@
-#include "handle.h"
+#include "iofile.h"
 #include "controller.h"
 
 int main(int argc, char* argv[]) {
 
-	if (argc != 2 || !contain(".csv", argv[1])) {
+	if (argc != 2 ) {
 		cout << "Wrong compiling method!!!\n" << "Please compile as follow: assignment1_group10.exe <filename>.csv" << endl;
 	}
 	
@@ -12,8 +12,13 @@ int main(int argc, char* argv[]) {
 	// read csvFile then store the value into the vector
 	read_csvFile(argv[1], col1, col2);
 	col1.shrinksize(), col2.shrinksize();
-	quickSort(col1.getArray(), 0, col1.getSize() - 1);
-	quickSort(col2.getArray(), 0, col2.getSize() - 1);
-	cout << findMad(col1.getArray(), col1.getSize());
+	
+	cout << "sum: " << col1.getSum() << endl;
+	cout << "max: " << col1.getMax() << endl;
+	cout << "mean: " << col1.getMean() << endl;
+	cout << "mode: " << col1.getMode() << endl;
+	cout << "variance: " << col1.getVariance() << endl;
+	cout << "deviation: " << col1.getStandardDeviation() << endl;
+
 	return 0;
 }

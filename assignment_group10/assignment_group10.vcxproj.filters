@@ -15,12 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="handle.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="quicksort.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="iofile.h">
       <Filter>Header Files</Filter>
     </ClInclude>

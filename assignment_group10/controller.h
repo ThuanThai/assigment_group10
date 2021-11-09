@@ -126,6 +126,14 @@ void myArray::findSum() {
 
 void myArray::findMedian() {
 	median = (arr[(LOW + size - 1) / 2] + arr[(LOW + size) / 2]) / 2;
+	/*
+	if (length % 2 != 0) {
+		median = arr[length / 2];
+	}
+	else {
+		median = (arr[(length - 1) / 2] + arr[length / 2]) / 2;
+	}
+	*/
 }
 
 void myArray::findMax() {

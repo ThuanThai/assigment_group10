@@ -21,6 +21,7 @@ private:
 	double mad;
 	double thirdQuartile;
 	double skewness;
+	double kurtosis;
 
 public:
 	int getSize() { return count; };
@@ -44,6 +45,7 @@ public:
 	double getMad();
 	double getThirdQuartile();
 	double getSkewness();
+	double getKurtosis();
 	
 	//setter
 	void findSum();
@@ -56,7 +58,7 @@ public:
 	void findMad();
 	void findThirdQuartile();
 	void findSkewness();
-	
+	void findKurtosis();
 };
 
 myArray::myArray() {
@@ -105,6 +107,7 @@ void myArray::shrinksize() {
 	findMad();
 	findThirdQuartile();
 	findSkewness();
+	findKurtosis();
 }
 
 void myArray::print() {
@@ -130,15 +133,15 @@ void myArray::findMax() {
 }
 
 void myArray::findMean() {
-	mean = (double)sum / (size - 1);
+	mean = (double)sum / size ;
 }
 
 void myArray::findVariance() {
 	double sqDiff = 0;
-	for (int i = 0; i < (size - 1); i++) {
+	for (int i = 0; i < size; i++) {
 		sqDiff += pow((arr[i] - mean), 2);
 	}
-	variance = sqDiff / (size - 2);
+	variance = sqDiff / (size - 1);
 }
 
 void myArray::findStandardDeviation() {
@@ -154,7 +157,7 @@ void myArray::findMode() {
 	int current_count = 0.0;
 
 	// loop through array
-	for (int i = 0; i < (size - 1); i++) {
+	for (int i = 0; i < size ; i++) {
 
 		//reset if meeting a new number
 		if (arr[i] != current_num) {
@@ -176,10 +179,10 @@ void myArray::findMode() {
 
 void myArray::findMad() {
 	double sumDiff = 0;
-	for (int i = 0; i < (size -1); i++) {
+	for (int i = 0; i < size; i++) {
 		sumDiff += abs((arr[i] - mean));
 	}
-	mad = sumDiff / (size - 1);
+	mad = sumDiff / size;
 }
 
 void myArray::findThirdQuartile() {
@@ -197,6 +200,14 @@ void myArray::findSkewness() {
 	}
 	skewness = sumDiff * coe / pow(standardDeviation, 3);
 	
+}
+
+void myArray::findKurtosis() {
+	for (int i = 0; i < size; ++i) {
+		kurtosis += pow((arr[i] - mean), 4.0);
+	}
+	kurtosis /= double(size) * pow(variance, 2.0);
+	kurtosis -= 3.0;
 }
 
 //getter
@@ -238,6 +249,10 @@ double myArray::getSkewness() {
 
 double myArray::getThirdQuartile() {
 	return thirdQuartile;
+}
+
+double myArray::getKurtosis() {
+	return kurtosis;
 }
 
 //quick sort

@@ -48,12 +48,12 @@ public:
 	//setter
 	void findSum();
 	void findMedian();
-	void findMax(double arr[], int length);
-	void findMean(double arr[], int length);
-	void find_variance(double arr[], int length);
-	void find_standardDeviation(double arr[], int length);
-	void findMode(double arr[], int length);
-	void findMad(double arr[], int length);
+	void findMax();
+	void findMean();
+	void find_variance();
+	void find_standardDeviation();
+	void findMode();
+	void findMad();
 	void findThirdQuartile();
 	void findSkewness();
 	
@@ -94,16 +94,15 @@ void myArray::shrinksize() {
 	arr = temp;
 	size = count;
 
-	int length = size - 1;
-	quickSort(arr, LOW, length);
+	quickSort(arr, LOW, size - 1);
 	findSum();
 	findMedian();
-	findMax(arr, length);
-	findMean(arr, length);
-	find_variance(arr, length);
-	find_standardDeviation(arr, length);
-	findMode(arr, length);
-	findMad(arr, length);
+	findMax();
+	findMean();
+	find_variance();
+	find_standardDeviation();
+	findMode();
+	findMad();
 	findThirdQuartile();
 	findSkewness();
 }
@@ -124,37 +123,29 @@ void myArray::findSum() {
 
 void myArray::findMedian() {
 	median = (arr[(LOW + size - 1) / 2] + arr[(LOW + size) / 2]) / 2;
-	/*
-	if (length % 2 != 0) {
-		median = arr[length / 2];
-	}
-	else {
-		median = (arr[(length - 1) / 2] + arr[length / 2]) / 2;
-	}
-	*/
 }
 
-void myArray::findMax(double arr[], int length) {
-	max = arr[length];
+void myArray::findMax() {
+	max = arr[size - 1];
 }
 
-void myArray::findMean(double arr[], int length) {
-	mean = (double)sum / length;
+void myArray::findMean() {
+	mean = (double)sum / (size - 1);
 }
 
-void myArray::find_variance(double arr[], int length) {
+void myArray::find_variance() {
 	double sqDiff = 0;
-	for (int i = 0; i < length; i++) {
+	for (int i = 0; i < (size - 1); i++) {
 		sqDiff += pow((arr[i] - mean), 2);
 	}
-	variance = sqDiff / (length - 1);
+	variance = sqDiff / (size - 2);
 }
 
-void myArray::find_standardDeviation(double arr[], int length) {
+void myArray::find_standardDeviation() {
 	standardDeviation = sqrt(variance);
 }
 
-void myArray::findMode(double arr[], int length) {
+void myArray::findMode() {
 	// only work if the array already sorted
 
 	// initialize 
@@ -163,7 +154,7 @@ void myArray::findMode(double arr[], int length) {
 	int current_count = 0.0;
 
 	// loop through array
-	for (int i = 0; i < length; i++) {
+	for (int i = 0; i < (size - 1); i++) {
 
 		//reset if meeting a new number
 		if (arr[i] != current_num) {
@@ -183,12 +174,12 @@ void myArray::findMode(double arr[], int length) {
 	}
 }
 
-void myArray::findMad(double arr[], int length) {
+void myArray::findMad() {
 	double sumDiff = 0;
-	for (int i = 0; i < length; i++) {
+	for (int i = 0; i < (size -1); i++) {
 		sumDiff += abs((arr[i] - mean));
 	}
-	mad = sumDiff / length;
+	mad = sumDiff / (size - 1);
 }
 
 void myArray::findThirdQuartile() {

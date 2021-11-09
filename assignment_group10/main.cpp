@@ -12,7 +12,9 @@ int main(int argc, char* argv[]) {
 	// read csvFile then store the value into the vector
 	read_csvFile(argv[1], col1, col2);
 	col1.shrinksize(), col2.shrinksize();
-	
+
+	cout << "size: " << col1.getSize() << endl;
+ 	
 	cout << "sum: " << col1.getSum() << endl;
 	cout << "max: " << col1.getMax() << endl;
 	cout << "mean: " << col1.getMean() << endl;

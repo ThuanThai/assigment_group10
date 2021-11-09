@@ -16,9 +16,11 @@ int main(int argc, char* argv[]) {
 	cout << "sum: " << col1.getSum() << endl;
 	cout << "max: " << col1.getMax() << endl;
 	cout << "mean: " << col1.getMean() << endl;
+	cout << "median: " << col2.getMedian() << endl;
 	cout << "mode: " << col1.getMode() << endl;
 	cout << "variance: " << col1.getVariance() << endl;
 	cout << "deviation: " << col1.getStandardDeviation() << endl;
-
+	cout << "Third Quartile: " << col1.getThirdQuartile() << endl;
+	cout << "skewness: " << col1.getSkewness() << endl;
 	return 0;
 }

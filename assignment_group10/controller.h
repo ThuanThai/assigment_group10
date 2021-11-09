@@ -1,6 +1,5 @@
 #pragma once
 #include <iostream>
-#include <unordered_map>
 #include <math.h>
 #define LOW 0
 
@@ -20,6 +19,8 @@ private:
 	double variance;
 	double standardDeviation;
 	double mad;
+	double thirdQuartile;
+	double skewness;
 
 public:
 	int getSize() { return count; };
@@ -41,16 +42,21 @@ public:
 	double getVariance();
 	double getStandardDeviation();
 	double getMad();
+	double getThirdQuartile();
+	double getSkewness();
 	
 	//setter
-	void findSum(double arr[], int length);
-	void findMedian(double arr[], int length);
+	void findSum();
+	void findMedian();
 	void findMax(double arr[], int length);
 	void findMean(double arr[], int length);
 	void find_variance(double arr[], int length);
 	void find_standardDeviation(double arr[], int length);
 	void findMode(double arr[], int length);
 	void findMad(double arr[], int length);
+	void findThirdQuartile();
+	void findSkewness();
+	
 };
 
 myArray::myArray() {
@@ -90,14 +96,16 @@ void myArray::shrinksize() {
 
 	int length = size - 1;
 	quickSort(arr, LOW, length);
-	findSum(arr, length);
-	findMedian(arr, length);
+	findSum();
+	findMedian();
 	findMax(arr, length);
 	findMean(arr, length);
 	find_variance(arr, length);
 	find_standardDeviation(arr, length);
 	findMode(arr, length);
 	findMad(arr, length);
+	findThirdQuartile();
+	findSkewness();
 }
 
 void myArray::print() {
@@ -108,19 +116,22 @@ void myArray::print() {
 
 
 // calculation functions
-void myArray::findSum(double arr[], int length) {
-	for (int i = 0; i < length; i++) {
+void myArray::findSum() {
+	for (int i = 0; i < size; i++) {
 		sum += arr[i];
 	}
 }
 
-void myArray::findMedian(double arr[], int length) {
+void myArray::findMedian() {
+	median = (arr[(LOW + size - 1) / 2] + arr[(LOW + size) / 2]) / 2;
+	/*
 	if (length % 2 != 0) {
 		median = arr[length / 2];
 	}
 	else {
 		median = (arr[(length - 1) / 2] + arr[length / 2]) / 2;
 	}
+	*/
 }
 
 void myArray::findMax(double arr[], int length) {
@@ -180,6 +191,22 @@ void myArray::findMad(double arr[], int length) {
 	mad = sumDiff / length;
 }
 
+void myArray::findThirdQuartile() {
+	if (size % 2 == 0) 
+		thirdQuartile = (arr[(size/2 + size - 1) / 2] + arr[(size / 2 + size) / 2]) / 2;
+	else 
+		thirdQuartile = (arr[(size / 2 + size) / 2] + arr[(size / 2 + size + 1) / 2]) / 2;
+}
+
+void myArray::findSkewness() {
+	double sumDiff = 0.0F;
+	double coe = (double)size / (((double)size - 1) * ((double)size - 2));
+	for (int i = 0; i < size; i++) {
+		sumDiff += pow(arr[i] - mean, 3);
+	}
+	skewness = sumDiff * coe / pow(standardDeviation, 3);
+	
+}
 
 //getter
 double myArray::getSum() {
@@ -212,6 +239,14 @@ double myArray::getStandardDeviation() {
 
 double myArray::getMad() {
 	return mad;
+}
+
+double myArray::getSkewness() {
+	return skewness;
+}
+
+double myArray::getThirdQuartile() {
+	return thirdQuartile;
 }
 
 //quick sort

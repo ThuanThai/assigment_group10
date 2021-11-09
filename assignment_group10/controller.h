@@ -50,8 +50,8 @@ public:
 	void findMedian();
 	void findMax();
 	void findMean();
-	void find_variance();
-	void find_standardDeviation();
+	void findVariance();
+	void findStandardDeviation();
 	void findMode();
 	void findMad();
 	void findThirdQuartile();
@@ -99,8 +99,8 @@ void myArray::shrinksize() {
 	findMedian();
 	findMax();
 	findMean();
-	find_variance();
-	find_standardDeviation();
+	findVariance();
+	findStandardDeviation();
 	findMode();
 	findMad();
 	findThirdQuartile();
@@ -133,7 +133,7 @@ void myArray::findMean() {
 	mean = (double)sum / (size - 1);
 }
 
-void myArray::find_variance() {
+void myArray::findVariance() {
 	double sqDiff = 0;
 	for (int i = 0; i < (size - 1); i++) {
 		sqDiff += pow((arr[i] - mean), 2);
@@ -141,7 +141,7 @@ void myArray::find_variance() {
 	variance = sqDiff / (size - 2);
 }
 
-void myArray::find_standardDeviation() {
+void myArray::findStandardDeviation() {
 	standardDeviation = sqrt(variance);
 }
 

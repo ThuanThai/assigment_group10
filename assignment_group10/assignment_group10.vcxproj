@@ -139,10 +139,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="handle.h" />
     <ClInclude Include="controller.h" />
     <ClInclude Include="iofile.h" />
-    <ClInclude Include="quicksort.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />

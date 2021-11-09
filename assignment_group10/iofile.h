@@ -6,14 +6,6 @@
 #include "controller.h"
 using namespace std;
 
-
-bool contain(const string& word, const string& sentence) {
-	return sentence.find(word)    // this returns the index of the first instance
-								  // word
-		!= string::npos;  // which will take this value if it's not found
-}
-
-
 void read_csvFile(char* fileName, myArray& col1, myArray& col2) {
 	ifstream fin;
 	fin.open(fileName, ios::in);

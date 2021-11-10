@@ -293,3 +293,10 @@ void myArray::quickSort(double arr[], int low, int high) {
 		quickSort(arr, low, n - 1);
 	}
 }
+double findCovariance(double arr1[], double arr2[], int size, double mean1, double mean2) {
+	int sum = 0;
+	for (int i = 0; i < size; i++) {
+		sum += (arr1[i] - mean1) * (arr2[i] - mean2);
+	}
+	return sum / size;
+}

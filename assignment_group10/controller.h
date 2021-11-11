@@ -306,10 +306,13 @@ void myArray::quickSort(double arr[], int low, int high) {
 //	}
 //	covariance /= size;
 //}
-double findCovariance(double arr1[], double arr2[], int size, double mean1, double mean2) {
-	int sum = 0;
+double findCovariance(myArray col1, myArray col2) {
+	double sum = 0;
+	int size = col1.getSize();
+	double xmean = col1.getMean();
+	double ymean = col2.getMean();
 	for (int i = 0; i < size; i++) {
-		sum += (arr1[i] - mean1) * (arr2[i] - mean2);
+		sum += (col1.getArray()[i] - xmean) * (col2.getArray()[i] - ymean);
 	}
-	return sum / size;
+	return (double)sum / size;
 }

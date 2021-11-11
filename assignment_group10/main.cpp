@@ -11,10 +11,13 @@ int main(int argc, char* argv[]) {
 	// read csvFile then store the value into the vector
 	read_csvFile(argv[1], col1, col2);
 	col1.shrinksize(), col2.shrinksize();
+	double mean1 = col1.getMean();
+	double mean2 = col2.getMean();
 	int size = col1.getSize();
 	cout << "sum: " << col1.getSum() << endl;
 	cout << "max: " << col1.getMax() << endl;
 	cout << "mean: " << col1.getMean() << endl;
+	cout << "mean: " << col2.getMean() << endl;
 	cout << "median: " << col2.getMedian() << endl;
 	cout << "mode: " << col1.getMode() << endl;
 	cout << "variance: " << col1.getVariance() << endl;
@@ -22,6 +25,6 @@ int main(int argc, char* argv[]) {
 	cout << "Third Quartile: " << col1.getThirdQuartile() << endl;
 	cout << "skewness: " << col1.getSkewness() << endl;
 	cout << "kurtosis: " << col1.getKurtosis() << endl;
-	cout << "covariance: " << findCovariance(col1.getArray(), col2.getArray(), size, col1.getMean(), col2.getMean()) << endl;
+	cout << "covariance: " << findCovariance(col1, col2) << endl;
 	return 0;
 }

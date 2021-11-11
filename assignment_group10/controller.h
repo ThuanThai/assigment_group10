@@ -22,6 +22,7 @@ private:
 	double thirdQuartile;
 	double skewness;
 	double kurtosis;
+	double covariance;
 
 public:
 	int getSize() { return count; };
@@ -46,7 +47,7 @@ public:
 	double getThirdQuartile();
 	double getSkewness();
 	double getKurtosis();
-	
+	double getCovariance();
 	//setter
 	void findSum();
 	void findMedian();
@@ -59,6 +60,7 @@ public:
 	void findThirdQuartile();
 	void findSkewness();
 	void findKurtosis();
+	void findcovariance(myArray arr);
 };
 
 myArray::myArray() {
@@ -263,6 +265,10 @@ double myArray::getKurtosis() {
 	return kurtosis;
 }
 
+double myArray::getCovariance() {
+	return covariance;
+}
+
 //quick sort
 void swap(float& a, float& b) {
 	float temp = a;
@@ -293,6 +299,13 @@ void myArray::quickSort(double arr[], int low, int high) {
 		quickSort(arr, low, n - 1);
 	}
 }
+
+//void myArray::findcovariance(myArray arr1) {
+//	for (int i = 0; i < size; i++) {
+//		covariance += (arr[i] - mean) * (arr1.getArray()[i] - arr1.getMean());
+//	}
+//	covariance /= size;
+//}
 double findCovariance(double arr1[], double arr2[], int size, double mean1, double mean2) {
 	int sum = 0;
 	for (int i = 0; i < size; i++) {

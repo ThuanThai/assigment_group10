@@ -7,12 +7,11 @@ int main(int argc, char* argv[]) {
 		cout << "Wrong compiling method!!!\n" << "Please compile as follow: assignment1_group10.exe <filename>.csv" << endl;
 	}
 	
-	int length;
 	myArray col1, col2;
 	// read csvFile then store the value into the vector
 	read_csvFile(argv[1], col1, col2);
 	col1.shrinksize(), col2.shrinksize();
-	
+	int size = col1.getSize();
 	cout << "sum: " << col1.getSum() << endl;
 	cout << "max: " << col1.getMax() << endl;
 	cout << "mean: " << col1.getMean() << endl;
@@ -23,5 +22,6 @@ int main(int argc, char* argv[]) {
 	cout << "Third Quartile: " << col1.getThirdQuartile() << endl;
 	cout << "skewness: " << col1.getSkewness() << endl;
 	cout << "kurtosis: " << col1.getKurtosis() << endl;
+	cout << "covariance: " << findCovariance(col1.getArray(), col2.getArray(), size, col1.getMean(), col2.getMean()) << endl;
 	return 0;
 }

@@ -60,7 +60,7 @@ public:
 	void findThirdQuartile();
 	void findSkewness();
 	void findKurtosis();
-	void findcovariance(myArray arr);
+	double findcovariance(myArray arr);
 };
 
 myArray::myArray() {
@@ -300,19 +300,9 @@ void myArray::quickSort(double arr[], int low, int high) {
 	}
 }
 
-//void myArray::findcovariance(myArray arr1) {
-//	for (int i = 0; i < size; i++) {
-//		covariance += (arr[i] - mean) * (arr1.getArray()[i] - arr1.getMean());
-//	}
-//	covariance /= size;
-//}
-double findCovariance(myArray col1, myArray col2) {
-	double sum = 0;
-	int size = col1.getSize();
-	double xmean = col1.getMean();
-	double ymean = col2.getMean();
+double myArray::findcovariance(myArray arr1) {
 	for (int i = 0; i < size; i++) {
-		sum += (col1.getArray()[i] - xmean) * (col2.getArray()[i] - ymean);
+		covariance += (arr[i] - mean) * (arr1.getArray()[i] - arr1.getMean());
 	}
-	return (double)sum / size;
+	return covariance /= size;
 }

@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <math.h>
+#include "quicksort.h"
 #define LOW 0
 
 using namespace std;
@@ -31,6 +32,7 @@ public:
 	void add(double val);
 	void growsize();
 	void shrinksize();
+	void start();
 	void print();
 
 	void quickSort(double arr[], int low, int high);
@@ -60,7 +62,7 @@ public:
 	void findThirdQuartile();
 	void findSkewness();
 	void findKurtosis();
-	double findcovariance(myArray arr);
+	void findcovariance(myArray arr);
 };
 
 myArray::myArray() {
@@ -97,12 +99,12 @@ void myArray::shrinksize() {
 	delete[] arr;
 	arr = temp;
 	size = count;
+}
 
+void myArray::start() {
 	quickSort(arr, LOW, size - 1);
-	findSum();
 	findMedian();
 	findMax();
-	findMean();
 	findVariance();
 	findStandardDeviation();
 	findMode();
@@ -269,28 +271,6 @@ double myArray::getCovariance() {
 	return covariance;
 }
 
-//quick sort
-void swap(float& a, float& b) {
-	float temp = a;
-	a = b;
-	b = temp;
-}
-
-int partition(double arr[], int low, int high) {
-	int pivot = arr[high];
-	int right = high - 1;
-	int left = low;
-	while (true) {
-		while (left <= right && arr[left] < pivot) left++;
-		while (right >= left && arr[right] > pivot) right--;
-		if (left >= right) break;
-		swap(arr[left], arr[right]);
-		left++;
-		right--;
-	}
-	swap(arr[left], arr[high]);
-	return left;
-}
 
 void myArray::quickSort(double arr[], int low, int high) {
 	if (low < high) {
@@ -300,9 +280,11 @@ void myArray::quickSort(double arr[], int low, int high) {
 	}
 }
 
-double myArray::findcovariance(myArray arr1) {
+void myArray::findcovariance(myArray arr1) {
 	for (int i = 0; i < size; i++) {
 		covariance += (arr[i] - mean) * (arr1.getArray()[i] - arr1.getMean());
 	}
-	return covariance /= size;
+
+	covariance /= size;
 }
+

@@ -306,3 +306,7 @@ double myArray::findcovariance(myArray arr1) {
 	}
 	return covariance /= size;
 }
+
+double getPearson(double covariance, myArray arr1, myArray arr2) {
+	return covariance / (arr1.getStandardDeviation() * arr2.getStandardDeviation());
+}

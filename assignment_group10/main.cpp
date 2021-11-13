@@ -15,6 +15,10 @@ int main(int argc, char* argv[]) {
 	double mean2 = col2.getMean();
 	int size = col1.getSize();
 
+	double covariance = col2.findcovariance(col1);
+	double Pearson = covariance / (col1.getStandardDeviation() * col2.getStandardDeviation());
+
+	//Descriptive Statistics
 	cout << "sum: " << col1.getSum() << endl;
 	cout << "max: " << col1.getMax() << endl;
 	cout << "mean: " << col1.getMean() << endl;
@@ -26,7 +30,9 @@ int main(int argc, char* argv[]) {
 	cout << "Third Quartile: " << col1.getThirdQuartile() << endl;
 	cout << "skewness: " << col1.getSkewness() << endl;
 	cout << "kurtosis: " << col1.getKurtosis() << endl;
-	cout << "covariance: " << col2.findcovariance(col1) << endl;
-	
+		
+	//Inferential Statistics
+	cout << "covariance: " << covariance << endl;
+	cout << "pearson: " << getPearson(covariance, col1, col2) << endl;
 	return 0;
 }

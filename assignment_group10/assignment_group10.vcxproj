@@ -140,6 +140,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="controller.h" />
+    <ClInclude Include="quicksort.h" />
     <ClInclude Include="iofile.h" />
   </ItemGroup>
   <ItemGroup>

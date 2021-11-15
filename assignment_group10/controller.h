@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <math.h>
+#include "quicksort.h"
 #define LOW 0
 
 using namespace std;
@@ -22,6 +23,7 @@ private:
 	double thirdQuartile;
 	double skewness;
 	double kurtosis;
+	double covariance;
 
 public:
 	int getSize() { return count; };
@@ -30,6 +32,7 @@ public:
 	void add(double val);
 	void growsize();
 	void shrinksize();
+	void start();
 	void print();
 
 	void quickSort(double arr[], int low, int high);
@@ -46,7 +49,7 @@ public:
 	double getThirdQuartile();
 	double getSkewness();
 	double getKurtosis();
-	
+	double getCovariance();
 	//setter
 	void findSum();
 	void findMedian();
@@ -59,6 +62,7 @@ public:
 	void findThirdQuartile();
 	void findSkewness();
 	void findKurtosis();
+	void findcovariance(myArray arr);
 };
 
 myArray::myArray() {
@@ -95,12 +99,12 @@ void myArray::shrinksize() {
 	delete[] arr;
 	arr = temp;
 	size = count;
+}
 
+void myArray::start() {
 	quickSort(arr, LOW, size - 1);
-	findSum();
 	findMedian();
 	findMax();
-	findMean();
 	findVariance();
 	findStandardDeviation();
 	findMode();
@@ -263,28 +267,10 @@ double myArray::getKurtosis() {
 	return kurtosis;
 }
 
-//quick sort
-void swap(float& a, float& b) {
-	float temp = a;
-	a = b;
-	b = temp;
+double myArray::getCovariance() {
+	return covariance;
 }
 
-int partition(double arr[], int low, int high) {
-	int pivot = arr[high];
-	int right = high - 1;
-	int left = low;
-	while (true) {
-		while (left <= right && arr[left] < pivot) left++;
-		while (right >= left && arr[right] > pivot) right--;
-		if (left >= right) break;
-		swap(arr[left], arr[right]);
-		left++;
-		right--;
-	}
-	swap(arr[left], arr[high]);
-	return left;
-}
 
 void myArray::quickSort(double arr[], int low, int high) {
 	if (low < high) {
@@ -293,3 +279,12 @@ void myArray::quickSort(double arr[], int low, int high) {
 		quickSort(arr, low, n - 1);
 	}
 }
+
+void myArray::findcovariance(myArray arr1) {
+	for (int i = 0; i < size; i++) {
+		covariance += (arr[i] - mean) * (arr1.getArray()[i] - arr1.getMean());
+	}
+
+	covariance /= size;
+}
+

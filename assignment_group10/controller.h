@@ -67,8 +67,8 @@ public:
 	void findSkewness();
 	void findKurtosis();
 	void findcovariance(myArray arr);
-	void findPearson(double covariance, myArray arr1, myArray arr2);
-	void findLinearRegression(double mean, double standardDeviation, double pearson, myArray arr1, myArray arr2);
+	void findPearson(myArray arr);
+	void findLinearRegression(myArray arr);
 };
 
 myArray::myArray() {
@@ -118,9 +118,6 @@ void myArray::start() {
 	findThirdQuartile();
 	findSkewness();
 	findKurtosis();
-	findcovariance();
-	findPearson();
-	findLinearRegression();
 }
 
 void myArray::print() {
@@ -303,8 +300,8 @@ void myArray::findcovariance(myArray arr1) {
 
 	covariance /= size;
 }
-void myArray::findPearson(double covariance, myArray arr1, myArray arr2) {
-	pearson = covariance / (arr1.getStandardDeviation() * arr2.getStandardDeviation());
+void myArray::findPearson(myArray arr2) {
+	pearson = covariance / (standardDeviation * arr2.getStandardDeviation());
 }
 
 /*
@@ -313,13 +310,13 @@ double getPearson(double covariance, myArray arr1, myArray arr2) {
 }
 */
 
-void myArray::findLinearRegression(double mean, double standardDeviation, double pearson, myArray arr1, myArray arr2) {
+void myArray::findLinearRegression(myArray arr) {
 	double a;
 	double b;
 	stringstream temp;
 
-	a = (pearson * arr2.getStandardDeviation()) / arr1.getStandardDeviation();
-	b = arr2.getMean() - (a * arr1.getMean());
+	a = (pearson * arr.getStandardDeviation()) / standardDeviation;
+	b = arr.getMean() - (a * mean);
 
 	temp << a << ".x" << " + " << b;
 	linearregression = temp.str();

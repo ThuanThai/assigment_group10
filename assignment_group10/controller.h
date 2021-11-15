@@ -24,8 +24,6 @@ private:
 	double skewness;
 	double kurtosis;
 	double covariance;
-	double pearson;
-	string linearregression;
 
 public:
 	int getSize() { return count; };
@@ -52,8 +50,6 @@ public:
 	double getSkewness();
 	double getKurtosis();
 	double getCovariance();
-	double getPearson();
-	string getLinearRegression();
 	//setter
 	void findSum();
 	void findMedian();
@@ -67,8 +63,8 @@ public:
 	void findSkewness();
 	void findKurtosis();
 	void findcovariance(myArray arr);
-	void findPearson(myArray arr);
-	void findLinearRegression(myArray arr);
+	double findPearson(myArray arr);
+	string findLinearRegression(myArray arr);
 };
 
 myArray::myArray() {
@@ -277,13 +273,6 @@ double myArray::getCovariance() {
 	return covariance;
 }
 
-double myArray::getPearson() {
-	return pearson;
-}
-
-string myArray::getLinearRegression() {
-	return linearregression;
-}
 
 void myArray::quickSort(double arr[], int low, int high) {
 	if (low < high) {
@@ -300,8 +289,9 @@ void myArray::findcovariance(myArray arr1) {
 
 	covariance /= size;
 }
-void myArray::findPearson(myArray arr2) {
-	pearson = covariance / (standardDeviation * arr2.getStandardDeviation());
+double myArray::findPearson(myArray arr2) {
+	double pearson = covariance / (standardDeviation * arr2.getStandardDeviation());
+	return pearson;
 }
 
 /*
@@ -310,16 +300,17 @@ double getPearson(double covariance, myArray arr1, myArray arr2) {
 }
 */
 
-void myArray::findLinearRegression(myArray arr) {
+string myArray::findLinearRegression(myArray arr) {
 	double a;
 	double b;
 	stringstream temp;
+	double pearson = findPearson(arr);
 
 	a = (pearson * arr.getStandardDeviation()) / standardDeviation;
 	b = arr.getMean() - (a * mean);
 
 	temp << a << ".x" << " + " << b;
-	linearregression = temp.str();
+	return temp.str();
 }
 
 

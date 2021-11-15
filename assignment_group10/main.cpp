@@ -16,6 +16,8 @@ int main(int argc, char* argv[]) {
 	col1.findcovariance(col2);
 
 	col1.start(); col2.start();
+	col1.findPearson(col2);
+	col1.findLinearRegression(col2);
 
 	cout << "sum: " << col1.getSum() << endl;
 	cout << "max: " << col1.getMax() << endl;
@@ -29,5 +31,7 @@ int main(int argc, char* argv[]) {
 	cout << "skewness: " << col1.getSkewness() << endl;
 	cout << "kurtosis: " << col1.getKurtosis() << endl;
 	cout << "covariance: " << col1.getCovariance() << endl;
+	cout << "Pearson: " << col1.getPearson() << endl;
+	cout << "Linear Regression: " << col1.getLinearRegression() << endl;
 	return 0;
 }

@@ -1,5 +1,7 @@
 #include "iofile.h"
 #include "controller.h"
+#include <iostream> 
+#include <iomanip> 
 
 int main(int argc, char* argv[]) {
 
@@ -16,21 +18,21 @@ int main(int argc, char* argv[]) {
 	col1.findcovariance(col2);
 
 	col1.start(); col2.start();
-
-
-	cout << "sum: " << col1.getSum() << endl;
-	cout << "max: " << col1.getMax() << endl;
-	cout << "mean: " << col1.getMean() << endl;
-	cout << "mean: " << col2.getMean() << endl;
-	cout << "median: " << col2.getMedian() << endl;
-	cout << "mode: " << col1.getMode() << endl;
-	cout << "variance: " << col1.getVariance() << endl;
-	cout << "deviation: " << col1.getStandardDeviation() << endl;
-	cout << "Third Quartile: " << col1.getThirdQuartile() << endl;
-	cout << "skewness: " << col1.getSkewness() << endl;
-	cout << "kurtosis: " << col1.getKurtosis() << endl;
-	cout << "covariance: " << col1.getCovariance() << endl;
-	cout << "Pearson: " << col1.findPearson(col2) << endl;
+	
+	
+	cout << setprecision(5) << "sum: "  << col1.getSum() << endl;
+	cout << setprecision(5) << "max: " << col1.getMax() << endl;
+	cout << setprecision(5) << "mean: " << col1.getMean() << endl;
+	cout << setprecision(5) << "mean: " << col2.getMean() << endl;
+	cout << setprecision(5) << "median: " << col2.getMedian() << endl;
+	cout << setprecision(5) << "mode: " << col1.getMode() << endl;
+	cout << setprecision(5) << "variance: " << col1.getVariance() << endl;
+	cout << setprecision(5) << "deviation: " << col1.getStandardDeviation() << endl;
+	cout << setprecision(5) << "Third Quartile: " << col1.getThirdQuartile() << endl;
+	cout << setprecision(5) << "skewness: " << col1.getSkewness() << endl;
+	cout << setprecision(5) << "kurtosis: " << col1.getKurtosis() << endl;
+	cout << setprecision(5) << "covariance: " << col1.getCovariance() << endl;
+	cout << setprecision(2) << "Pearson: " << col1.findPearson(col2) << endl;
 	cout << "Linear Regression: " << col1.findLinearRegression(col2) << endl;
 	return 0;
 }

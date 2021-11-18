@@ -36,8 +36,6 @@ public:
 	void start();
 	void print();
 
-	void quickSort(double arr[], int low, int high);
-
 	//getter
 	double getSum();
 	double getMedian();
@@ -268,14 +266,6 @@ double myArray::getKurtosis() {
 
 double myArray::getCovariance() {
 	return covariance;
-}
-
-void myArray::quickSort(double arr[], int low, int high) {
-	if (low < high) {
-		int n = partition(arr, low, high);
-		quickSort(arr, n + 1, high);
-		quickSort(arr, low, n - 1);
-	}
 }
 
 void myArray::findcovariance(myArray arr1) {

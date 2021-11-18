@@ -1,7 +1,7 @@
 #pragma once
 //quick sort
 void swap(double& a, double& b) {
-	float temp = a;
+	double temp = a;
 	a = b;
 	b = temp;
 }

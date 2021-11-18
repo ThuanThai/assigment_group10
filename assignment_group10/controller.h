@@ -2,6 +2,7 @@
 #include <iostream>
 #include <math.h>
 #include "quicksort.h"
+#include <iomanip>
 #define LOW 0
 
 using namespace std;
@@ -13,9 +14,9 @@ private:
 	int size;
 
 	double sum;
-	double median;
-	double max;
-	double mode;
+	double median = 0.0F;
+	double max = 0.0F;
+	double mode = 0.0F;
 	double mean;
 	double variance;
 	double standardDeviation;
@@ -50,6 +51,7 @@ public:
 	double getSkewness();
 	double getKurtosis();
 	double getCovariance();
+
 	//setter
 	void findSum();
 	void findMedian();
@@ -122,7 +124,6 @@ void myArray::print() {
 	}
 }
 
-
 // calculation functions
 void myArray::findSum() {
 	for (int i = 0; i < size; i++) {
@@ -147,7 +148,7 @@ void myArray::findMax() {
 }
 
 void myArray::findMean() {
-	mean = (double)sum / size ;
+	mean = (double)sum / size;
 }
 
 void myArray::findVariance() {
@@ -165,17 +166,15 @@ void myArray::findStandardDeviation() {
 void myArray::findMode() {
 	// only work if the array already sorted
 
-	// initialize 
+	// initialize
 	int mode_count = 0.0;
 	double current_num = 0.0;
 	int current_count = 0.0;
 
 	// loop through array
-	for (int i = 0; i < size ; i++) {
-
+	for (int i = 0; i < size; i++) {
 		//reset if meeting a new number
 		if (arr[i] != current_num) {
-
 			//update mode and mode_count if the current number appears more frequently
 			if ((i != 0) && (current_count > mode_count)) {
 				mode_count = current_count;
@@ -185,9 +184,8 @@ void myArray::findMode() {
 			//reset
 			current_num = arr[i];
 			current_count = 1;
-
 		}
-		else current_count++; //increase count if meeting the same number 
+		else current_count++; //increase count if meeting the same number
 	}
 }
 
@@ -200,9 +198,9 @@ void myArray::findMad() {
 }
 
 void myArray::findThirdQuartile() {
-	if (size % 2 == 0) 
-		thirdQuartile = (arr[(size/2 + size - 1) / 2] + arr[(size / 2 + size) / 2]) / 2;
-	else 
+	if (size % 2 == 0)
+		thirdQuartile = (arr[(size / 2 + size - 1) / 2] + arr[(size / 2 + size) / 2]) / 2;
+	else
 		thirdQuartile = (arr[(size / 2 + size) / 2] + arr[(size / 2 + size + 1) / 2]) / 2;
 }
 
@@ -213,7 +211,6 @@ void myArray::findSkewness() {
 		sumDiff += pow(arr[i] - mean, 3);
 	}
 	skewness = sumDiff * coe / pow(standardDeviation, 3);
-	
 }
 
 void myArray::findKurtosis() {
@@ -273,7 +270,6 @@ double myArray::getCovariance() {
 	return covariance;
 }
 
-
 void myArray::quickSort(double arr[], int low, int high) {
 	if (low < high) {
 		int n = partition(arr, low, high);
@@ -294,12 +290,6 @@ double myArray::findPearson(myArray arr2) {
 	return pearson;
 }
 
-/*
-double getPearson(double covariance, myArray arr1, myArray arr2) {
-	return covariance / (arr1.getStandardDeviation() * arr2.getStandardDeviation());
-}
-*/
-
 string myArray::findLinearRegression(myArray arr) {
 	double a;
 	double b;
@@ -309,8 +299,6 @@ string myArray::findLinearRegression(myArray arr) {
 	a = (pearson * arr.getStandardDeviation()) / standardDeviation;
 	b = arr.getMean() - (a * mean);
 
-	temp << a << ".x" << " + " << b;
+	temp << setprecision(4) << fixed << a << "x" << " + " << b;
 	return temp.str();
 }
-
-

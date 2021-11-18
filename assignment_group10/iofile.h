@@ -22,11 +22,9 @@ void read_csvFile(char* fileName, myArray& col1, myArray& col2) {
 		stringstream s1(line1);
 		stringstream s2(line2);
 
-		while (s1 >> temp1) {
-			col1.add(temp1);
-		}
-		while (s2 >> temp2) {
-			col2.add(temp2);
+		while (s1 >> temp1 && s2 >> temp2) {
+				col1.add(temp1);
+				col2.add(temp2);
 		}
 	}
 }

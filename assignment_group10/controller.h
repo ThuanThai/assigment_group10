@@ -157,9 +157,9 @@ void myArray::findMode() {
 	// only work if the array already sorted
 
 	// initialize
-	int mode_count = 0.0;
+	int mode_count = 0;
 	double current_num = 0.0;
-	int current_count = 0.0;
+	int current_count = 0;
 
 	// loop through array
 	for (int i = 0; i < size; i++) {

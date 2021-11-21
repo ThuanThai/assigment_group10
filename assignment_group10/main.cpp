@@ -6,15 +6,21 @@
 int main(int argc, char* argv[]) {
 	if (argc != 2) {
 		cout << "Wrong compiling method!!!\n" << "Please compile as follow: assignment1_group10.exe <filename>.csv" << endl;
+		return 0;
 	}
-
+	
+	// create two objects 
 	myArray col1, col2;
+	// read data from file
+	// and store data in arrays 
 	read_csvFile(argv[1], col1, col2);
-	col1.shrinksize(); col2.shrinksize();
+	// delete redundant memory locations
+	col1.shrinkSize(); col2.shrinkSize();
+
 
 	col1.findSum(); col2.findSum();
 	col1.findMean(); col2.findMean();
-	col1.findcovariance(col2);
+	col1.findCovariance(col2);
 
 	col1.start(); col2.start();
 

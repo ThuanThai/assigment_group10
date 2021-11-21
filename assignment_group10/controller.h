@@ -31,8 +31,8 @@ public:
 	double* getArray() { return arr; };
 	myArray();
 	void add(double val);
-	void growsize();
-	void shrinksize();
+	void growSize();
+	void shrinkSize();
 	void start();
 	void print();
 
@@ -62,7 +62,7 @@ public:
 	void findThirdQuartile();
 	void findSkewness();
 	void findKurtosis();
-	void findcovariance(myArray arr);
+	void findCovariance(myArray arr);
 	double findPearson(myArray arr);
 	string findLinearRegression(myArray arr);
 };
@@ -75,12 +75,12 @@ myArray::myArray() {
 
 void myArray::add(double val) {
 	if (count == size)
-		growsize();
+		growSize();
 	arr[count] = val;
 	count++;
 }
 
-void myArray::growsize() {
+void myArray::growSize() {
 	double* temp = new double[size + 100];
 	for (int i = 0; i < size; i++) {
 		temp[i] = arr[i];
@@ -90,7 +90,7 @@ void myArray::growsize() {
 	size += 100;
 }
 
-void myArray::shrinksize() {
+void myArray::shrinkSize() {
 	double* temp = NULL;
 	if (count > 0) {
 		temp = new double[count];
@@ -260,7 +260,7 @@ double myArray::getCovariance() {
 	return covariance;
 }
 
-void myArray::findcovariance(myArray arr1) {
+void myArray::findCovariance(myArray arr1) {
 	for (int i = 0; i < size; i++) {
 		covariance += (arr[i] - mean) * (arr1.getArray()[i] - arr1.getMean());
 	}

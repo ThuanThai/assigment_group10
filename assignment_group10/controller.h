@@ -62,6 +62,7 @@ public:
 	void findThirdQuartile();
 	void findSkewness();
 	void findKurtosis();
+	friend void end(myArray col1, myArray col2);
 	void findcovariance(myArray arr);
 	double findPearson(myArray arr);
 	string findLinearRegression(myArray arr);
@@ -283,6 +284,11 @@ double myArray::getKurtosis() {
 
 double myArray::getCovariance() {
 	return covariance;
+}
+
+void end(myArray col1, myArray col2) {
+	delete[] col1.getArray();
+	delete[] col2.getArray();
 }
 
 

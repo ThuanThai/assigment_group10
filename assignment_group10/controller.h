@@ -211,6 +211,31 @@ void myArray::findKurtosis() {
 	kurtosis -= 3.0;
 }
 
+void myArray::findcovariance(myArray arr1) {
+	for (int i = 0; i < size; i++) {
+		covariance += (arr[i] - mean) * (arr1.getArray()[i] - arr1.getMean());
+	}
+
+	covariance /= size;
+}
+double myArray::findPearson(myArray arr2) {
+	double pearson = covariance / (standardDeviation * arr2.getStandardDeviation());
+	return pearson;
+}
+
+string myArray::findLinearRegression(myArray arr) {
+	double a;
+	double b;
+	stringstream temp;
+	double pearson = findPearson(arr);
+
+	a = (pearson * arr.getStandardDeviation()) / standardDeviation;
+	b = arr.getMean() - (a * mean);
+
+	temp << setprecision(4) << fixed << a << "x" << " + " << b;
+	return temp.str();
+}
+
 //getter
 double myArray::getSum() {
 	return sum;
@@ -260,27 +285,4 @@ double myArray::getCovariance() {
 	return covariance;
 }
 
-void myArray::findcovariance(myArray arr1) {
-	for (int i = 0; i < size; i++) {
-		covariance += (arr[i] - mean) * (arr1.getArray()[i] - arr1.getMean());
-	}
 
-	covariance /= size;
-}
-double myArray::findPearson(myArray arr2) {
-	double pearson = covariance / (standardDeviation * arr2.getStandardDeviation());
-	return pearson;
-}
-
-string myArray::findLinearRegression(myArray arr) {
-	double a;
-	double b;
-	stringstream temp;
-	double pearson = findPearson(arr);
-
-	a = (pearson * arr.getStandardDeviation()) / standardDeviation;
-	b = arr.getMean() - (a * mean);
-
-	temp << setprecision(4) << fixed << a << "x" << " + " << b;
-	return temp.str();
-}

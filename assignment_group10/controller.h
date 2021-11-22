@@ -14,9 +14,9 @@ private:
 	int size;
 
 	double sum;
-	double median = 0.0F;
-	double max = 0.0F;
-	double mode = 0.0F;
+	double median = 0.0;
+	double max = 0.0;
+	double mode = 0.0;
 	double mean;
 	double variance;
 	double standardDeviation;
@@ -125,20 +125,20 @@ void myArray::print() {
 // calculation functions
 void myArray::findSum() {
 	for (int i = 0; i < size; i++) {
-		sum += arr[i];
+		this->sum += arr[i];
 	}
 }
 
 void myArray::findMedian() {
-	median = (arr[(LOW + size - 1) / 2] + arr[(LOW + size) / 2]) / 2;
+	this->median = (arr[(LOW + size - 1) / 2] + arr[(LOW + size) / 2]) / 2;
 }
 
 void myArray::findMax() {
-	max = arr[size - 1];
+	this->max = arr[size - 1];
 }
 
 void myArray::findMean() {
-	mean = (double)sum / size;
+	this->mean = (double)sum / size;
 }
 
 void myArray::findVariance() {
@@ -146,11 +146,11 @@ void myArray::findVariance() {
 	for (int i = 0; i < size; i++) {
 		sqDiff += pow((arr[i] - mean), 2);
 	}
-	variance = sqDiff / (size - 1);
+	this->variance = sqDiff / (size - 1);
 }
 
 void myArray::findStandardDeviation() {
-	standardDeviation = sqrt(variance);
+	this->standardDeviation = sqrt(variance);
 }
 
 void myArray::findMode() {
@@ -168,7 +168,7 @@ void myArray::findMode() {
 			//update mode and mode_count if the current number appears more frequently
 			if ((i != 0) && (current_count > mode_count)) {
 				mode_count = current_count;
-				mode = arr[i - 1];
+				this->mode = arr[i - 1];
 			}
 
 			//reset
@@ -184,14 +184,14 @@ void myArray::findMad() {
 	for (int i = 0; i < size; i++) {
 		sumDiff += abs((arr[i] - mean));
 	}
-	mad = sumDiff / size;
+	this->mad = sumDiff / size;
 }
 
 void myArray::findThirdQuartile() {
 	if (size % 2 == 0)
-		thirdQuartile = (arr[(size / 2 + size - 1) / 2] + arr[(size / 2 + size) / 2]) / 2;
+		this->thirdQuartile = (arr[(size / 2 + size - 1) / 2] + arr[(size / 2 + size) / 2]) / 2;
 	else
-		thirdQuartile = (arr[(size / 2 + size) / 2] + arr[(size / 2 + size + 1) / 2]) / 2;
+		this->thirdQuartile = (arr[(size / 2 + size) / 2] + arr[(size / 2 + size + 1) / 2]) / 2;
 }
 
 void myArray::findSkewness() {
@@ -200,23 +200,23 @@ void myArray::findSkewness() {
 	for (int i = 0; i < size; i++) {
 		sumDiff += pow(arr[i] - mean, 3);
 	}
-	skewness = sumDiff * coe / pow(standardDeviation, 3);
+	this->skewness = sumDiff * coe / pow(standardDeviation, 3);
 }
 
 void myArray::findKurtosis() {
 	for (int i = 0; i < size; ++i) {
-		kurtosis += pow((arr[i] - mean), 4.0);
+		this->kurtosis += pow((arr[i] - mean), 4.0);
 	}
-	kurtosis /= double(size) * pow(variance, 2.0);
-	kurtosis -= 3.0;
+	this->kurtosis /= double(size) * pow(variance, 2.0);
+	this->kurtosis -= 3.0;
 }
 
 void myArray::findcovariance(myArray arr1) {
 	for (int i = 0; i < size; i++) {
-		covariance += (arr[i] - mean) * (arr1.getArray()[i] - arr1.getMean());
+		this->covariance += (arr[i] - mean) * (arr1.getArray()[i] - arr1.getMean());
 	}
 
-	covariance /= size;
+	this->covariance /= size;
 }
 double myArray::findPearson(myArray arr2) {
 	double pearson = covariance / (standardDeviation * arr2.getStandardDeviation());

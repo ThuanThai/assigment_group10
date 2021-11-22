@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <math.h>
+#include <sstream> 
 #include "quicksort.h"
 #include <iomanip>
 #define LOW 0

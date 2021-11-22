@@ -1,5 +1,7 @@
 #pragma once
-//quick sort
+// quick sort
+// EEET 2482 Software Engineering Design
+// Author: Dr.Minh Dinh
 void swap(double& a, double& b) {
 	double temp = a;
 	a = b;

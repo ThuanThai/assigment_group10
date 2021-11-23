@@ -9,7 +9,7 @@ using namespace std;
 // function check for valid input
 bool is_valid_data(string str) {
 	bool result = false;
-	//variable count the dot 
+	//variable count the dot
 	int dot_count = 0;
 
 	for (int i = 0; i < str.length(); i++) {
@@ -17,7 +17,7 @@ bool is_valid_data(string str) {
 		if ((str[i] < '0' || str[i] > '9') && str[i] != '.') {
 			return result;
 		}
-		
+
 		//check for dot
 		if (str[i] == '.') {
 			dot_count++;
@@ -33,15 +33,19 @@ bool is_valid_data(string str) {
 
 void read_csvFile(char* fileName, myArray& col1, myArray& col2) {
 	ifstream fin;
-	fin.open(fileName, ios::in);
+	fin.open(fileName, ios::in); // open file, mode: read
+	//check for file open
 	if (!fin) {
-		cout << "Cannot open File!\n";
+		cerr << "Cannot open File!\n";
+		return;
 	}
-	int i = 0;
+
 	double temp1, temp2;
 	while (fin.good()) {
+		//create two strings
 		string line1;
 		string line2;
+		// read line
 		getline(fin, line1, ',');
 		getline(fin, line2, '\n');
 		//check valid input
@@ -49,12 +53,15 @@ void read_csvFile(char* fileName, myArray& col1, myArray& col2) {
 		if (!is_valid_data(line1) || !is_valid_data(line2)) {
 			continue;
 		}
+
 		stringstream s1(line1);
 		stringstream s2(line2);
 
+		// if string can be converted to double
+		// -> add data to array
 		while (s1 >> temp1 && s2 >> temp2) {
-				col1.add(temp1);
-				col2.add(temp2);
+			col1.add(temp1);
+			col2.add(temp2);
 		}
 	}
 }

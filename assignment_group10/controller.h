@@ -16,18 +16,18 @@ private:
 	int size;
 
 	// variables storing statistics
-	double sum;
-	double median = 0.0F;
-	double max = 0.0F;
-	double mode = 0.0F;
-	double mean;
-	double variance;
-	double standardDeviation;
-	double mad;
-	double thirdQuartile;
-	double skewness;
-	double kurtosis;
-	double covariance;
+	double sum = 0;
+	double median = 0;
+	double max = 0;
+	double mode = 0;
+	double mean = 0;
+	double variance = 0;
+	double standardDeviation = 0;
+	double mad = 0;
+	double thirdQuartile = 0;
+	double skewness = 0;
+	double kurtosis = 0;
+	double covariance = 0;
 
 public:
 	myArray();
@@ -40,6 +40,7 @@ public:
 	void print(); // funtion printing the data
 
 	//getter
+	double getSum();
 	double getMedian();
 	double getMode();
 	double getMean();
@@ -52,6 +53,7 @@ public:
 	double getCovariance();
 
 	//setter
+	void findSum();
 	void findMedian();
 	void findMean();
 	void findVariance();
@@ -133,6 +135,13 @@ void myArray::print() {
 }
 
 // CALCULATION FUNCTIONS (SETTER)
+// find sum	
+void myArray::findSum() {
+	for (int i = 0; i < size; i++) {
+		this->sum += arr[i];
+	}
+}
+
 
 // find median
 void myArray::findMedian() {
@@ -222,6 +231,10 @@ void myArray::findKurtosis() {
 }
 
 // GETTER
+// get sum
+double myArray::getSum() {
+	return sum;
+}
 
 // get median
 double myArray::getMedian() {

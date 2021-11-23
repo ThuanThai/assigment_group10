@@ -18,6 +18,7 @@ int main(int argc, char* argv[]) {
 	// delete redundant memory locations
 	col1.shrinkSize(); col2.shrinkSize();
 
+	col1.findSum(); col2.findSum();
 	// find mean of each data set
 	col1.findMean(); col2.findMean();
 	// find covariance of two data sets

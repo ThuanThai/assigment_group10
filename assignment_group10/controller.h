@@ -65,7 +65,7 @@ public:
 	void findSkewness();
 	void findKurtosis();
 	friend void end(myArray col1, myArray col2);
-	void findcovariance(myArray arr);
+	void findCovariance(myArray arr);
 	double findPearson(myArray arr);
 	string findLinearRegression(myArray arr);
 };
@@ -296,6 +296,9 @@ void myArray::findCovariance(myArray arr1) {
 		covariance += (arr[i] - mean) * (arr1.getArray()[i] - arr1.getMean());
 	}
 	covariance /= size;
+}
+
+// function end to delete rray in myArray object
 void end(myArray col1, myArray col2) {
 	delete[] col1.getArray();
 	delete[] col2.getArray();

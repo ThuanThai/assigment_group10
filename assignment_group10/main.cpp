@@ -43,7 +43,10 @@ int main(int argc, char* argv[]) {
 	cout << setprecision(4) << fixed << "cov(x_y) =  " << col1.getCovariance() << endl;
 	cout << setprecision(4) << fixed << "r(x_y) =  " << col1.findPearson(col2) << endl;
 	cout << "Linear Regression: " << col1.findLinearRegression(col2) << endl;
+
+	// delete two arrays
 	end(col1, col2);
+
 	cout << "\n\t\tASSIGNMENT 1 GROUP 10" << endl;
 	cout << "s3877819, s3877819@rmit.edu.vn, Phong, Le" << endl;
 	cout << "s3877798, s3877798@rmit.edu.vn, Anh, Nguyen" << endl;

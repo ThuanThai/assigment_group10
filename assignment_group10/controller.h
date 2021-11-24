@@ -1,7 +1,7 @@
 #pragma once
 #include <iostream>
 #include <math.h>
-#include <sstream> 
+#include <sstream>
 #include "quicksort.h"
 #include <iomanip>
 #define LOW 0 // first index of array
@@ -137,13 +137,12 @@ void myArray::print() {
 }
 
 // CALCULATION FUNCTIONS (SETTER)
-// find sum	
+// find sum
 void myArray::findSum() {
 	for (int i = 0; i < size; i++) {
 		this->sum += arr[i];
 	}
 }
-
 
 // find median
 void myArray::findMedian() {
@@ -298,12 +297,6 @@ void myArray::findCovariance(myArray arr1) {
 	covariance /= size;
 }
 
-// function end to delete rray in myArray object
-void end(myArray col1, myArray col2) {
-	delete[] col1.getArray();
-	delete[] col2.getArray();
-}
-
 // find Pearson coefficient of two data sets
 double myArray::findPearson(myArray arr2) {
 	// pearson = covariance / (x.standardDeviation * y.standardDeviation)
@@ -324,4 +317,10 @@ string myArray::findLinearRegression(myArray arr) {
 	// Linear regression: y = ax + b
 	temp << setprecision(4) << fixed << a << "x" << " + " << b; // set number to 4 decimal points
 	return temp.str();
+}
+
+// function end to delete rray in myArray object
+void end(myArray col1, myArray col2) {
+	delete[] col1.getArray();
+	delete[] col2.getArray();
 }

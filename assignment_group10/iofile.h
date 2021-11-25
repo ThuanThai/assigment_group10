@@ -31,13 +31,15 @@ bool is_valid_data(string str) {
 	return result;
 }
 
+// function read the file
+// and extract data into two array
 void read_csvFile(char* fileName, myArray& col1, myArray& col2) {
 	ifstream fin;
 	fin.open(fileName, ios::in); // open file, mode: read
 	//check for file open
 	if (!fin) {
 		cerr << "Cannot open File!\n";
-		return;
+		return ;
 	}
 
 	double temp1, temp2;

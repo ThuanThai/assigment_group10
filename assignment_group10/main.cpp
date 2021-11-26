@@ -14,7 +14,10 @@ int main(int argc, char* argv[]) {
 	myArray col1, col2;
 	// read data from file
 	// and store data in arrays
-	read_csvFile(argv[1], col1, col2);
+	// if file cannot be opened -> return false
+	if (!read_csvFile(argv[1], col1, col2))
+		return 0;
+
 	// delete redundant memory locations
 	col1.shrinkSize(); col2.shrinkSize();
 

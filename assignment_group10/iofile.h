@@ -11,14 +11,18 @@ bool is_valid_data(string str) {
 	bool result = false;
 	//variable count the dot
 	int dot_count = 0;
+	int current_index = 0;
+	// check if number is negative
+	if (str[current_index] == '-')
+		current_index = 1;
 
-	for (int i = 0; i < str.length(); i++) {
+	for (int i = current_index; i < str.length(); i++) {
 		//check if all chars are not number and dot
 		if ((str[i] < '0' || str[i] > '9') && str[i] != '.') {
 			return result;
 		}
 
-		//check for dot
+		//check for dot count 
 		if (str[i] == '.') {
 			dot_count++;
 			//check if dot appears > 1 time
